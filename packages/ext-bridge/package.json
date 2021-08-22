@@ -1,0 +1,31 @@
+{
+  "name": "@vscbridge/ext",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "es/index.d.ts",
+  "files": [
+    "lib",
+    "es",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/falcon11/VSCBridge.git"
+  },
+  "keywords": [
+    "dumi"
+  ],
+  "authors": [],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.59.0"
+  },
+  "dependencies": {
+    "@vscbridge/shared": "^0.0.1"
+  }
+}

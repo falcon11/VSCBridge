@@ -1,5 +1,5 @@
 {
-  "name": "antd-mobile-a",
+  "name": "@vscbridge/shared",
   "version": "0.0.1",
   "description": "",
   "main": "lib/index.js",
@@ -12,20 +12,18 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/umijs/dumi-lerna-template"
+    "url": "https://github.com/falcon11/VSCBridge.git"
   },
   "keywords": [
     "dumi"
   ],
   "authors": [
-    ""
   ],
   "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {
-    "antd-mobile": "2.3.3",
-    "classnames": "^2.2.6"
+  "devDependencies": {
+    "@types/vscode": "^1.59.0"
   }
 }

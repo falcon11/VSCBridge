@@ -1,4 +1,4 @@
-/node_modules
+node_modules
 /coverage
 /packages/*/lib
 /packages/*/es
@@ -12,3 +12,6 @@
 /.changelog
 yarn.lock
 .umi
+.umi-production
+dist
+yarn-error.log
