@@ -1,6 +1,6 @@
 {
   "name": "@vscbridge/ext",
-  "version": "0.0.1",
+  "version": "1.0.0-alpha.0",
   "description": "",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -26,6 +26,6 @@
     "@types/vscode": "^1.59.0"
   },
   "dependencies": {
-    "@vscbridge/shared": "^0.0.1"
+    "@vscbridge/shared": "1.0.0-alpha.0"
   }
 }
