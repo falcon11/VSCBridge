@@ -7,6 +7,12 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerCommand('react-webview.start', () => {
 		ReactPanel.createOrShow(context.extensionPath);
 	}));
+	context.subscriptions.push(vscode.commands.registerCommand('react-webview.echo', async () => {
+		ReactPanel.currentPanel?.bridge.callHandler('echo', 'hello webview')
+		.then(data => {
+			vscode.window.showInformationMessage(`echo text: ${data}`);
+		});
+	}));
 }
 
 /**
@@ -17,13 +23,13 @@ class ReactPanel {
 	 * Track the currently panel. Only allow a single panel to exist at a time.
 	 */
 	public static currentPanel: ReactPanel | undefined;
+	public readonly bridge: Bridge;
 
 	private static readonly viewType = 'react';
 
 	private readonly _panel: vscode.WebviewPanel;
 	private readonly _extensionPath: string;
 	private _disposables: vscode.Disposable[] = [];
-	private readonly _bridge: Bridge;
 
 	public static createOrShow(extensionPath: string) {
 		const column = vscode.window.activeTextEditor ? vscode.window.activeTextEditor.viewColumn : undefined;
@@ -51,9 +57,9 @@ class ReactPanel {
 			]
 		});
 
-		this._bridge = new Bridge({ webview: this._panel.webview });
+		this.bridge = new Bridge({ webview: this._panel.webview });
 
-		this._bridge.registerHandler('echo', (data, callback) => {
+		this.bridge.registerHandler('echo', (data, callback) => {
 			callback(data);
 		});
 		

@@ -4,7 +4,7 @@ Bridge between vscode extension and webview.
 
 ## 🚀 How to use?
 
-See the [doc](./doc/index.md)
+See the [doc](./docs/index.md)
 
 ## ✨ Online preview
 

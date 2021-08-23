@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import bridge from '@vscbridge/webview';
 import './App.css';
 
@@ -10,6 +10,12 @@ function App() {
     const data = await bridge.callHandler('echo', text);
     setEchoText(String(data));
   };
+  useEffect(() => {
+    bridge.registerHandler('echo', (data, callback) => {
+      callback(data);
+    });
+  }, []);
+  
   return (
     <div className="App">
       <form>
