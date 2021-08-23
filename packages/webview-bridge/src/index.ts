@@ -1,4 +1,8 @@
-import { BridgeEvent, CALLBACK_HANDLER_NAME, HandlerType } from 'shared';
+import {
+  BridgeEvent,
+  CALLBACK_HANDLER_NAME,
+  HandlerType,
+} from '@vscbridge/shared';
 
 let vscode: any;
 if (!vscode) {
@@ -38,7 +42,7 @@ class Bridge {
       }
       const fn = this.handlers.get(message.handlerName);
       if (typeof fn === 'function' && !!fn) {
-        fn(message.data, (response) => {
+        fn(message.data, (response: any) => {
           this.sendResponseToExtension(message.callbackId, response);
         });
       }

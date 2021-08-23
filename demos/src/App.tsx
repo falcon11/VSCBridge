@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import bridge from '@vscbridge/webview';
 import './App.css';
 
 function App() {
+  const [text, setText] = useState('');
+  const [echoText, setEchoText] = useState('');
+  const handleClick: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
+    e.preventDefault();
+    const data = await bridge.callHandler('echo', text);
+    setEchoText(String(data));
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form>
+        <label>1212:</label>
+        <input onChange={e => setText(e.target.value)}/>
+        <br/>
+        <button onClick={handleClick}>
+          call extension echo method
+        </button>
+        <br/>
+        <label>echoText:</label>
+        <p>{echoText}</p>
+      </form>
     </div>
   );
 }

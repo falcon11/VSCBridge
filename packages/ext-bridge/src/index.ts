@@ -1,5 +1,9 @@
 import * as vscode from 'vscode';
-import { HandlerType, BridgeEvent, CALLBACK_HANDLER_NAME } from 'shared';
+import {
+  HandlerType,
+  BridgeEvent,
+  CALLBACK_HANDLER_NAME,
+} from '@vscbridge/shared';
 
 class Bridge {
   constructor({ webview }: { webview: vscode.Webview }) {
@@ -72,7 +76,13 @@ class Bridge {
     });
   }
 
-  handleReceiveWebviewCallback({ callbackId, data }: { callbackId: number, data: any }) {
+  handleReceiveWebviewCallback({
+    callbackId,
+    data,
+  }: {
+    callbackId: number;
+    data: any;
+  }) {
     const fn = this.callbacks.get(callbackId);
     if (typeof fn === 'function' && !!fn) {
       fn(data);

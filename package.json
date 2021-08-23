@@ -1,4 +1,8 @@
 {
+  "private": "true",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "start": "dumi dev",
@@ -19,7 +23,7 @@
     "father-build": "^1.19.2",
     "lerna": "^3.6.0",
     "lerna-changelog": "^0.8.2",
-    "umi-test": "^1.5.12",
+    "@umijs/test": "^3.5.17",
     "umi-tools": "^0.4.0",
     "umi-types": "^0.5.3"
   }

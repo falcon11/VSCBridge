@@ -26,6 +26,6 @@
     "@types/vscode": "^1.59.0"
   },
   "dependencies": {
-    "@vscbridge/shared": "1.0.0-alpha.0"
+    "@vscbridge/shared": "^1.0.0-alpha.3"
   }
 }

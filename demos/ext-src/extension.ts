@@ -1,5 +1,6 @@
 import * as path from 'path';
 import * as vscode from 'vscode';
+import Bridge from '@vscbridge/ext';
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -22,6 +23,7 @@ class ReactPanel {
 	private readonly _panel: vscode.WebviewPanel;
 	private readonly _extensionPath: string;
 	private _disposables: vscode.Disposable[] = [];
+	private readonly _bridge: Bridge;
 
 	public static createOrShow(extensionPath: string) {
 		const column = vscode.window.activeTextEditor ? vscode.window.activeTextEditor.viewColumn : undefined;
@@ -47,6 +49,12 @@ class ReactPanel {
 			localResourceRoots: [
 				vscode.Uri.file(path.join(this._extensionPath, 'build'))
 			]
+		});
+
+		this._bridge = new Bridge({ webview: this._panel.webview });
+
+		this._bridge.registerHandler('echo', (data, callback) => {
+			callback(data);
 		});
 		
 		// Set the webview's initial html content 
